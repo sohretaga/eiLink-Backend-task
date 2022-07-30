@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     # My Apps
     "news",
     # Additional Apps
-    "django_extensions",
     "rest_framework",
 ]
 

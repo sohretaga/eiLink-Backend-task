@@ -1,11 +1,31 @@
 from rest_framework import serializers
-from news.models import News
-from datetime import datetime, date
-from django.utils import timesince
+from news.models import News, Comment
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+
+
+# from datetime import datetime, date
+# from django.utils import timesince
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = "__all__"
+
+    # validate_password = make_password
+
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = "__all__"
 
 
 class NewsSerializer(serializers.ModelSerializer):
     # time_since_publish = serializers.SerializerMethodField()
+    comments = CommentSerializer(many=True, read_only=True)
 
     class Meta:
         model = News
