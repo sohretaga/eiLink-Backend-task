@@ -13,8 +13,9 @@ class NewsAdmin(admin.ModelAdmin):
     list_filter = ("upvotes", "creation_date")
     search_fields = ("title",)
 
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'news', 'creation_date')
-    list_filter = ( 'creation_date',)
-    search_fields = ('author',)
+    list_display = ("author", "news", "creation_date")
+    list_filter = ("creation_date",)
+    search_fields = ("author",)

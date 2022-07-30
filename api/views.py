@@ -1,6 +1,7 @@
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.generics import get_object_or_404
 
 from django.contrib.auth.models import User
 from news.models import News, Comment
@@ -8,13 +9,15 @@ from api.serializers import NewsSerializer, CommentSerializer, UserSerializer
 
 
 class UserListCreateAPIView(generics.ListCreateAPIView):
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
 
 
 class CommentListCreateAPIView(generics.ListCreateAPIView):
@@ -23,11 +26,21 @@ class CommentListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
 
-
 class CommentDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
+
+class CommentCreateAPIView(generics.CreateAPIView):
+
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+    def perform_create(self, serializer):
+        news_pk = self.kwargs.get("news_pk")
+        news = get_object_or_404(News, pk=news_pk)
+        serializer.save(news=news)
 
 
 # News Model API

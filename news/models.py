@@ -22,7 +22,7 @@ class News(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
-    news = models.ForeignKey(News, on_delete=models.CASCADE, blank=False, null=False, related_name='comments')
+    news = models.ForeignKey(News, on_delete=models.CASCADE, blank=False, null=False, related_name="comments")
     content = models.TextField(max_length=500, blank=False, null=False)
     creation_date = models.DateTimeField(auto_now_add=True)
 
