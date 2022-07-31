@@ -11,4 +11,6 @@ urlpatterns = [
 
     path('comments/', api_views.CommentListCreateAPIView.as_view(), name="comment-list"),
     path('comment/<int:pk>/', api_views.CommentDetailAPIView.as_view(), name="comment-detail"),
-]
+
+    path('upvote/<int:pk>/add-upvote/', api_views.news_upvote_update, name="add-upvote"),
+] 

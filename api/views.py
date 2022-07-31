@@ -1,3 +1,4 @@
+from turtle import title
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -82,6 +83,22 @@ def news_detail_api_view(request, pk):
     elif request.method == "DELETE":
         news.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["GET", "PUT"])
+def news_upvote_update(request, pk):
+    news = get_object_or_404(News, pk=pk)
+    add = news.upvotes + 1
+    newUpvote = News(
+        id=pk,
+        title=news.title,
+        author=news.author,
+        link=news.link,
+        upvotes=add,
+        creation_date=news.creation_date,
+    )
+    newUpvote.save()
+    return Response(status=status.HTTP_201_CREATED)
 
     # Comment Model API
 
