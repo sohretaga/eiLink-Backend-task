@@ -21,3 +21,6 @@ Click this link to give a upvote to a news:(1 rating is given to the linked news
 Note: You can perform operations such as deleting and updating (PUT, DELETE) within the links.
 
 You can get different results by changing the id's in the links.
+
+Postgresql used as database
+Code was formatted with Black
