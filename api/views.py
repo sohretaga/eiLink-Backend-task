@@ -1,4 +1,5 @@
 from turtle import title
+from urllib import request
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -41,7 +42,8 @@ class CommentCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         news_pk = self.kwargs.get("news_pk")
         news = get_object_or_404(News, pk=news_pk)
-        serializer.save(news=news)
+        user = self.request.user
+        serializer.save(news=news, author=user)
 
 
 # News Model API
