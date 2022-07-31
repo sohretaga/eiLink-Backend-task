@@ -23,4 +23,5 @@ Note: You can perform operations such as deleting and updating (PUT, DELETE) wit
 You can get different results by changing the id's in the links.
 
 Postgresql used as database
+
 Code was formatted with Black
