@@ -25,3 +25,8 @@ You can get different results by changing the id's in the links.
 Postgresql used as database
 
 Code was formatted with Black
+
+Adin Panel: http://159.223.174.164/admin
+
+username: admin
+password: admin
