@@ -30,3 +30,5 @@ Adin Panel: http://159.223.174.164/admin
 
 username: admin
 password: admin
+
+You must be an admin login to access the data.
